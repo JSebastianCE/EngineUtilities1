@@ -21,6 +21,17 @@
   <ItemGroup>
     <ClCompile Include="src\EngineMath.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Core\Constants.h" />
+    <ClInclude Include="include\Math\EngineMath.h" />
+    <ClInclude Include="include\Matrices\Matrix2x2.h" />
+    <ClInclude Include="include\Matrices\Matrix3x3.h" />
+    <ClInclude Include="include\Matrices\Matrix4x4.h" />
+    <ClInclude Include="include\Rotations\Quaternion.h" />
+    <ClInclude Include="include\Vectors\Vector2.h" />
+    <ClInclude Include="include\Vectors\Vector3.h" />
+    <ClInclude Include="include\Vectors\Vector4.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>

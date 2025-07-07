@@ -13,10 +13,54 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Vectors">
+      <UniqueIdentifier>{ccf170b4-fbb9-4160-b4fa-4f79eb4e0f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Matrices">
+      <UniqueIdentifier>{70f62dd9-37cb-433d-814b-d9fcfa4119c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Rotations">
+      <UniqueIdentifier>{27751e46-24b9-42d1-a1db-e7276899e062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Math">
+      <UniqueIdentifier>{999c6c42-501f-4195-9c89-6efe0976088c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{f2432398-0a89-43ae-9a18-d42f5accdc8d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EngineMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\Vectors\Vector2.h">
+      <Filter>Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vectors\Vector3.h">
+      <Filter>Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Vectors\Vector4.h">
+      <Filter>Vectors</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrices\Matrix2x2.h">
+      <Filter>Matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrices\Matrix3x3.h">
+      <Filter>Matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Matrices\Matrix4x4.h">
+      <Filter>Matrices</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Rotations\Quaternion.h">
+      <Filter>Rotations</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Math\EngineMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Core\Constants.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
