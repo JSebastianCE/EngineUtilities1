@@ -7,7 +7,7 @@
  * @brief Provides general mathematical utility functions used across the engine.
  */
 
-namespace EngineUtilities {
+namespace EngineUtilities { //Acronimos como EU
   namespace Math {
 
     //Funciones Básicas

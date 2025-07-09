@@ -21,49 +21,53 @@ namespace EngineUtilities {
      * @brief Constructor por defecto. Inicializa como matriz identidad.
      */
     Matrix2x2()
-      : m00(1.f), m01(0.f),
-      m10(0.f), m11(1.f) {
+      : m00(1.f), m01(0.f), m10(0.f), m11(1.f) {
     }
 
     /**
-     * @brief Constructor con parámetros.
+     * @brief Constructor con parámetros.    Cambiarlo a Inglés 
      * @param m00 Valor superior izquierdo.
      * @param m01 Valor superior derecho.
      * @param m10 Valor inferior izquierdo.
      * @param m11 Valor inferior derecho.
      */
-    Matrix2x2(float m00, float m01, float m10, float m11)
-      : m00(m00), m01(m01),
+    Matrix2x2(float m00, float m01, float m10, float m11) : m00(m00), m01(m01),
       m10(m10), m11(m11) {
     }
 
     // Operadores aritméticos
 
+    // Suma
     Matrix2x2 operator+(const Matrix2x2& other) const {
-      return Matrix2x2(
+    return Matrix2x2(
         m00 + other.m00, m01 + other.m01,
         m10 + other.m10, m11 + other.m11
       );
     }
 
+    // Resta
     Matrix2x2 operator-(const Matrix2x2& other) const {
-      return Matrix2x2(
+    return Matrix2x2(
         m00 - other.m00, m01 - other.m01,
         m10 - other.m10, m11 - other.m11
       );
     }
 
+    // Mult escalar 
     Matrix2x2 operator*(float scalar) const {
-      return Matrix2x2(
+    return Matrix2x2(
         m00 * scalar, m01 * scalar,
         m10 * scalar, m11 * scalar
       );
     }
 
+    // Mult matrices
     Matrix2x2 operator*(const Matrix2x2& other) const {
-      return Matrix2x2(
-        m00 * other.m00 + m01 * other.m10, m00 * other.m01 + m01 * other.m11,
-        m10 * other.m00 + m11 * other.m10, m10 * other.m01 + m11 * other.m11
+    return Matrix2x2(
+        m00 * other.m00 + m01 * other.m10, // Fila 0 * Col 0
+        m00 * other.m01 + m01 * other.m11, // Fila 0 * Col 1
+        m10 * other.m00 + m11 * other.m10, // Fila 1 * ol 0
+        m10 * other.m01 + m11 * other.m11 // Fila 1 * Col 1
       );
     }
 
@@ -73,14 +77,14 @@ namespace EngineUtilities {
      * @return Vector transformado.
      */
     CVector2 operator*(const CVector2& vec) const {
-      return CVector2(
+    return CVector2(
         m00 * vec.x + m01 * vec.y,
         m10 * vec.x + m11 * vec.y
       );
     }
 
     // Operadores de asignación compuesta
-
+    // Modificación matriz actual en lugar de crear una nueva
     Matrix2x2& operator+=(const Matrix2x2& other) {
       m00 += other.m00; m01 += other.m01;
       m10 += other.m10; m11 += other.m11;
@@ -108,20 +112,22 @@ namespace EngineUtilities {
      * @return Referencia al valor.
      */
     float& operator()(int row, int col) {
-      return *((&m00) + row * 2 + col);
+     return *((&m00) + row * 2 + col);
     }
 
-    const float& operator()(int row, int col) const {
+    const 
+    float& operator()(int row, int col) const {
       return *((&m00) + row * 2 + col);
     }
 
     // Funciones de utilidad
 
     /**
-     * @brief Calcula el determinante de la matriz.
+     * @brief Calcula el determinante de la matriz. Determina si la matriz es invertrible
      * @return Determinante escalar.
      */
-    float determinant() const {
+    float 
+    determinant() const {
       return m00 * m11 - m01 * m10;
     }
 
@@ -131,7 +137,7 @@ namespace EngineUtilities {
      */
     Matrix2x2 transpose() const {
       return Matrix2x2(
-        m00, m10,
+        m00, m10, //Inercambia filas por columnas
         m01, m11
       );
     }
@@ -153,7 +159,8 @@ namespace EngineUtilities {
     /**
      * @brief Establece esta matriz como identidad.
      */
-    void setIdentity() {
+    void 
+    setIdentity() {
       m00 = 1.f; m01 = 0.f;
       m10 = 0.f; m11 = 1.f;
     }
@@ -163,7 +170,8 @@ namespace EngineUtilities {
      * @param scaleX Escala en X.
      * @param scaleY Escala en Y.
      */
-    void setScale(float scaleX, float scaleY) {
+    void 
+    setScale(float scaleX, float scaleY) {
       m00 = scaleX; m01 = 0.f;
       m10 = 0.f;    m11 = scaleY;
     }
@@ -172,7 +180,8 @@ namespace EngineUtilities {
      * @brief Establece esta matriz como una de rotación.
      * @param radians Ángulo en radianes.
      */
-    void setRotation(float radians) {
+    void 
+    setRotation(float radians) {
       float c = EngineUtilities::Math::cos(radians);
       float s = EngineUtilities::Math::sin(radians);
       m00 = c;  m01 = -s;
