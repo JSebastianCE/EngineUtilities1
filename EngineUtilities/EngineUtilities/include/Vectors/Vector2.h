@@ -1,14 +1,15 @@
 #pragma once
 
 #include "../Prerequisites.h"
+#include <Math/EngineMath.h>
 
 /**
  * @file CVector2.h
  * @brief Represents a custom 2D vector with common mathematical operations.
  */
-class CVector2 {
+class 
+CVector2 {
 public:
-
   float x;
   float y;
 
@@ -99,8 +100,8 @@ public:
     return index == 0 ? x : y;
   }
 
-  const float&
-    operator[](int index) const {
+  const 
+  float& operator[](int index) const {
     return index == 0 ? x : y;
   }
 
@@ -112,7 +113,7 @@ public:
    */
   float
   length() const {
-    return sqrt(x * x + y * y);
+    return EU::Math::sqrt(x * x + y * y);
   }
 
   /**
@@ -266,18 +267,9 @@ public:
   //se va para utilidades
 
 
-private:
-  /**
-   * @brief Returns the square root
-   */
-  float
-  sqrt(float value) const {
-    if (value <= 0.f) return 0.f;
-    float
-      guess = value / 2.f;
-    for (int i = 0; i < 10; ++i) {
-      guess = 0.5f * (guess + value / guess);
-    }
-    return guess;
+  float 
+  length() const {
+    return EU::Math::sqrt(x * x + y * y);
   }
+
 };

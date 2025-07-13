@@ -18,7 +18,7 @@ namespace EU {
      * @return Approximate square root.
      */
     inline
-      float sqrt(float x) {
+    float sqrt(float x) {
       if (x <= 0.f) return 0.f;
       float guess = x / 2.f;
       for (int i = 0; i < 10; ++i) {
@@ -33,7 +33,7 @@ namespace EU {
      * @return x squared.
      */
     inline
-      float square(float x) {
+    float square(float x) {
       return x * x;
     }
 
@@ -43,7 +43,7 @@ namespace EU {
      * @return x cubed.
      */
     inline
-      float cube(float x) {
+    float cube(float x) {
       return x * x * x;
     }
 
@@ -54,7 +54,7 @@ namespace EU {
      * @return x raised to the power of n.
      */
     inline
-      float power(float x, int n) {
+    float power(float x, int n) {
       float result = 1.f;
       for (int i = 0; i < n; ++i) {
         result *= x;
@@ -68,7 +68,7 @@ namespace EU {
      * @return Absolute value of x.
      */
     inline
-      float abs(float x) {
+    float abs(float x) {
       return x < 0.f ? -x : x;
     }
 
@@ -79,7 +79,7 @@ namespace EU {
      * @return Greater of a or b.
      */
     inline
-      float EMax(float a, float b) {
+    float EMax(float a, float b) {
       return a > b ? a : b;
     }
 
@@ -90,7 +90,7 @@ namespace EU {
      * @return Lesser of a or b.
      */
     inline
-      float EMin(float a, float b) {
+    float EMin(float a, float b) {
       return a < b ? a : b;
     }
 
@@ -102,7 +102,7 @@ namespace EU {
      * @return Rounded integer.
      */
     inline
-      int round(float x) {
+    int round(float x) {
       return (x >= 0.f) ? static_cast<int>(x + 0.5f) : static_cast<int>(x - 0.5f);
     }
 
@@ -112,7 +112,7 @@ namespace EU {
      * @return Floored integer.
      */
     inline
-      int floor(float x) {
+    int floor(float x) {
       int i = static_cast<int>(x);
       return (x < 0.f && x != i) ? i - 1 : i;
     }
@@ -123,7 +123,7 @@ namespace EU {
      * @return Ceiled integer.
      */
     inline
-      int ceil(float x) {
+    int ceil(float x) {
       int i = static_cast<int>(x);
       return (x > 0.f && x != i) ? i + 1 : i;
     }
@@ -134,7 +134,7 @@ namespace EU {
      * @return Absolute value.
      */
     inline
-      float fabs(float x) {
+    float fabs(float x) {
       return abs(x);
     }
 
@@ -147,7 +147,7 @@ namespace EU {
      * @return a modulo b.
      */
     inline
-      float mod(float a, float b) {
+    float mod(float a, float b) {
       return a - b * floor(a / b);
     }
 
@@ -157,7 +157,7 @@ namespace EU {
      * @return e raised to x.
      */
     inline
-      float exp(float x) {
+    float exp(float x) {
       float result = 1.0f;
       float term = 1.0f;
       for (int i = 1; i <= 10; ++i) {
@@ -173,7 +173,7 @@ namespace EU {
      * @return Natural logarithm of x.
      */
     inline
-      float log(float x) {
+    float log(float x) {
       if (x <= 0.f) return 0.f;
       float y = (x - 1) / (x + 1);
       float y2 = y * y;
@@ -190,7 +190,7 @@ namespace EU {
      * @return log10(x)
      */
     inline
-      float log10(float x) {
+    float log10(float x) {
       return log(x) / 2.3025851f;
     }
 
@@ -202,7 +202,7 @@ namespace EU {
      * @return Sine of x.
      */
     inline
-      float sin(float x) {
+    float sin(float x) {
       while (x > 3.14159265f) x -= 2.0f * 3.14159265f;
       while (x < -3.14159265f) x += 2.0f * 3.14159265f;
       float x2 = x * x;
@@ -215,7 +215,7 @@ namespace EU {
      * @return Cosine of x.
      */
     inline
-      float cos(float x) {
+    float cos(float x) {
       while (x > 3.14159265f) x -= 2.0f * 3.14159265f;
       while (x < -3.14159265f) x += 2.0f * 3.14159265f;
       float x2 = x * x;
@@ -228,7 +228,7 @@ namespace EU {
      * @return Tangent of x.
      */
     inline
-      float tan(float x) {
+    float tan(float x) {
       float c = cos(x);
       if (c == 0.f) return 0.f;
       return sin(x) / c;
@@ -240,7 +240,7 @@ namespace EU {
      * @return arcsin(x)
      */
     inline
-      float asin(float x) {
+    float asin(float x) {
       float x2 = x * x;
       return x + (x2 * x) / 6.0f + (3 * x2 * x2 * x) / 40.0f;
     }
@@ -251,7 +251,7 @@ namespace EU {
      * @return arccos(x)
      */
     inline
-      float acos(float x) {
+    float acos(float x) {
       return 1.5707963f - asin(x); // π/2 - asin(x)
     }
 
@@ -261,7 +261,7 @@ namespace EU {
      * @return arctan(x)
      */
     inline
-      float atan(float x) {
+    float atan(float x) {
       return x - (x * x * x) / 3.0f + (x * x * x * x * x) / 5.0f;
     }
 
@@ -271,7 +271,7 @@ namespace EU {
      * @return sinh(x)
      */
     inline
-      float sinh(float x) {
+    float sinh(float x) {
       return (exp(x) - exp(-x)) / 2.0f;
     }
 
@@ -281,7 +281,7 @@ namespace EU {
      * @return cosh(x)
      */
     inline
-      float cosh(float x) {
+    float cosh(float x) {
       return (exp(x) + exp(-x)) / 2.0f;
     }
 
@@ -291,7 +291,7 @@ namespace EU {
      * @return tanh(x)
      */
     inline
-      float tanh(float x) {
+    float tanh(float x) {
       return sinh(x) / cosh(x);
     }
 
@@ -303,7 +303,7 @@ namespace EU {
      * @return Angle in radians.
      */
     inline
-      float radians(float degrees) {
+    float radians(float degrees) {
       return degrees * 3.14159265f / 180.0f;
     }
 
@@ -313,7 +313,7 @@ namespace EU {
      * @return Angle in degrees.
      */
     inline
-      float degrees(float radians) {
+    float degrees(float radians) {
       return radians * 180.0f / 3.14159265f;
     }
 

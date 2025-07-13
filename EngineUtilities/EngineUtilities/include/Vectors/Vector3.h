@@ -1,12 +1,14 @@
 #pragma once
 
 #include "../Prerequisites.h"
+#include <Math/EngineMath.h>
 
 /**
  * @file CVector3.h
  * @brief Represents a custom 3D vector with common mathematical operations.
  */
-class CVector3 {
+class
+CVector3 {
 public:
   float x;
   float y;
@@ -28,45 +30,53 @@ public:
   CVector3(float x, float y, float z) : x(x), y(y), z(z) {}
 
   // Arithmetic operators
-  CVector3 operator+(const CVector3& other) const {
+  CVector3 
+  operator+(const CVector3& other) const {
     return CVector3(x + other.x, y + other.y, z + other.z);
   }
 
-  CVector3 operator-(const CVector3& other) const {
+  CVector3 
+  operator-(const CVector3& other) const {
     return CVector3(x - other.x, y - other.y, z - other.z);
   }
 
-  CVector3 operator*(float scalar) const {
+  CVector3 
+  operator*(float scalar) const {
     return CVector3(x * scalar, y * scalar, z * scalar);
   }
 
-  CVector3 operator/(float divisor) const {
+  CVector3 
+  operator/(float divisor) const {
     return CVector3(x / divisor, y / divisor, z / divisor);
   }
 
   // Compound assignment operators
-  CVector3& operator+=(const CVector3& other) {
+  CVector3& 
+  operator+=(const CVector3& other) {
     x += other.x;
     y += other.y;
     z += other.z;
     return *this;
   }
 
-  CVector3& operator-=(const CVector3& other) {
+  CVector3& 
+  operator-=(const CVector3& other) {
     x -= other.x;
     y -= other.y;
     z -= other.z;
     return *this;
   }
 
-  CVector3& operator*=(float scalar) {
+  CVector3& 
+  operator*=(float scalar) {
     x *= scalar;
     y *= scalar;
     z *= scalar;
     return *this;
   }
 
-  CVector3& operator/=(float scalar) {
+  CVector3& 
+  operator/=(float scalar) {
     x /= scalar;
     y /= scalar;
     z /= scalar;
@@ -91,7 +101,8 @@ public:
    * @param index 0 for x, 1 for y, 2 for z.
    * @return Reference to the component.
    */
-  float& operator[](int index) {
+  float& 
+  operator[](int index) {
     if (index == 0) return x;
     if (index == 1) return y;
     return z;
@@ -112,7 +123,7 @@ public:
    */
   float 
   length() const {
-    return sqrt(x * x + y * y + z * z);
+    return EU::Math::sqrt(x * x + y * y + z * z);
   }
 
   /**
@@ -273,19 +284,9 @@ public:
     z = origin.z;
   }
 
-private:
-  /**
-   * @brief Returns the square root
-   * @param value Value to compute the square root of.
-   * @return Square root of the value.
-   */
-  float 
-  sqrt(float value) const {
-    if (value <= 0.f) return 0.f;
-    float guess = value / 2.f;
-    for (int i = 0; i < 10; ++i) {
-      guess = 0.5f * (guess + value / guess);
-    }
-    return guess;
+  float
+  length() const {
+    return EU::Math::sqrt(x * x + y * y + z * z );
   }
+
 };
