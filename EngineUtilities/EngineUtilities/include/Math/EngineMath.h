@@ -1,22 +1,24 @@
 ﻿#pragma once
 
-//#include "../Prerequisites.h" añadirlo a Prerequisites
+//#include "../Prerequisites.h" // Add this to Prerequisites
 
 /**
  * @file EngineMath.h
  * @brief Provides general mathematical utility functions used across the engine.
  */
 
-namespace EU { //Acronimos como EU
+namespace EU {
   namespace Math {
 
-    //Funciones Básicas
+    // Basic Math Functions
 
     /**
-     * @brief Calcula la raíz cuadrada.
+     * @brief Computes the square root using the Newton-Raphson method.
+     * @param x Input value.
+     * @return Approximate square root.
      */
-    inline 
-    float sqrt(float x) {
+    inline
+      float sqrt(float x) {
       if (x <= 0.f) return 0.f;
       float guess = x / 2.f;
       for (int i = 0; i < 10; ++i) {
@@ -26,26 +28,33 @@ namespace EU { //Acronimos como EU
     }
 
     /**
-     * @brief Devuelve el cuadrado de un número.
+     * @brief Returns the square of a number.
+     * @param x Input value.
+     * @return x squared.
      */
-    inline 
-    float square(float x) {
+    inline
+      float square(float x) {
       return x * x;
     }
 
     /**
-     * @brief Devuelve el cubo de un número.
+     * @brief Returns the cube of a number.
+     * @param x Input value.
+     * @return x cubed.
      */
-    inline 
-    float cube(float x) {
+    inline
+      float cube(float x) {
       return x * x * x;
     }
 
     /**
-     * @brief Eleva x a la potencia n (entera).
+     * @brief Raises x to the power of n (integer exponent).
+     * @param x Base value.
+     * @param n Exponent value.
+     * @return x raised to the power of n.
      */
-    inline 
-    float power(float x, int n) {
+    inline
+      float power(float x, int n) {
       float result = 1.f;
       for (int i = 0; i < n; ++i) {
         result *= x;
@@ -54,80 +63,101 @@ namespace EU { //Acronimos como EU
     }
 
     /**
-     * @brief Valor absoluto.
+     * @brief Returns the absolute value.
+     * @param x Input value.
+     * @return Absolute value of x.
      */
-    inline 
-    float abs(float x) {
+    inline
+      float abs(float x) {
       return x < 0.f ? -x : x;
     }
 
     /**
-     * @brief Devuelve el valor máximo entre dos números.
+     * @brief Returns the maximum between two values.
+     * @param a First value.
+     * @param b Second value.
+     * @return Greater of a or b.
      */
-    inline 
-    float EMax(float a, float b) {
+    inline
+      float EMax(float a, float b) {
       return a > b ? a : b;
     }
 
     /**
-     * @brief Devuelve el valor mínimo entre dos números.
+     * @brief Returns the minimum between two values.
+     * @param a First value.
+     * @param b Second value.
+     * @return Lesser of a or b.
      */
-    inline 
-    float EMin(float a, float b) {
+    inline
+      float EMin(float a, float b) {
       return a < b ? a : b;
     }
 
-    //Redondeos
+    // Rounding
 
     /**
-     * @brief Redondea al número entero más cercano.
+     * @brief Rounds to the nearest integer.
+     * @param x Input value.
+     * @return Rounded integer.
      */
-    inline 
-    int round(float x) {
+    inline
+      int round(float x) {
       return (x >= 0.f) ? static_cast<int>(x + 0.5f) : static_cast<int>(x - 0.5f);
     }
 
     /**
-     * @brief Redondea hacia abajo.
+     * @brief Rounds down to the nearest integer.
+     * @param x Input value.
+     * @return Floored integer.
      */
-    inline 
-    int floor(float x) {
+    inline
+      int floor(float x) {
       int i = static_cast<int>(x);
       return (x < 0.f && x != i) ? i - 1 : i;
     }
 
     /**
-     * @brief Redondea hacia arriba.
+     * @brief Rounds up to the nearest integer.
+     * @param x Input value.
+     * @return Ceiled integer.
      */
-    inline 
-    int ceil(float x) {
+    inline
+      int ceil(float x) {
       int i = static_cast<int>(x);
       return (x > 0.f && x != i) ? i + 1 : i;
     }
 
     /**
-     * @brief Valor absoluto flotante.
+     * @brief Returns the floating-point absolute value.
+     * @param x Input value.
+     * @return Absolute value.
      */
-    inline 
-    float fabs(float x) {
+    inline
+      float fabs(float x) {
       return abs(x);
     }
 
-    // Funciones exponenciales y logarítmicas
+    // Exponential and Logarithmic Functions
 
     /**
-     * @brief Módulo entre dos valores flotantes.
+     * @brief Returns the floating-point remainder of a / b.
+     * @param a Dividend.
+     * @param b Divisor.
+     * @return a modulo b.
      */
-    inline 
-    float mod(float a, float b) {
+    inline
+      float mod(float a, float b) {
       return a - b * floor(a / b);
     }
 
     /**
-     * @brief Aproximación de e^x.
+     * @brief Approximates the exponential function e^x using Taylor series.
+     * @param x Exponent.
+     * @return e raised to x.
      */
-    inline 
-    float exp(float x) {
+    inline
+      float exp(float x) {
       float result = 1.0f;
       float term = 1.0f;
       for (int i = 1; i <= 10; ++i) {
@@ -138,10 +168,12 @@ namespace EU { //Acronimos como EU
     }
 
     /**
-     * @brief Logaritmo natural (ln) usando serie de Taylor para x cercano a 1.
+     * @brief Approximates the natural logarithm (ln) for values near 1.
+     * @param x Input value.
+     * @return Natural logarithm of x.
      */
-    inline 
-    float log(float x) {
+    inline
+      float log(float x) {
       if (x <= 0.f) return 0.f;
       float y = (x - 1) / (x + 1);
       float y2 = y * y;
@@ -153,89 +185,137 @@ namespace EU { //Acronimos como EU
     }
 
     /**
-     * @brief Logaritmo base 10.
+     * @brief Returns base-10 logarithm of x.
+     * @param x Input value.
+     * @return log10(x)
      */
-    inline 
-    float log10(float x) {
-      return log(x) / 2.3025851f; // log10(e) ≈ 2.3025851
+    inline
+      float log10(float x) {
+      return log(x) / 2.3025851f;
     }
 
-    //Trigonometría
+    // Trigonometric Functions
 
-    inline 
-    float sin(float x) {
+    /**
+     * @brief Approximates sine using Taylor series.
+     * @param x Angle in radians.
+     * @return Sine of x.
+     */
+    inline
+      float sin(float x) {
       while (x > 3.14159265f) x -= 2.0f * 3.14159265f;
       while (x < -3.14159265f) x += 2.0f * 3.14159265f;
       float x2 = x * x;
-      return x - (x2 * x) / 6.0f + (x2 * x2 * x) / 120.0f - 
-        (x2 * x2 * x2 * x) / 5040.0f;
+      return x - (x2 * x) / 6.0f + (x2 * x2 * x) / 120.0f - (x2 * x2 * x2 * x) / 5040.0f;
     }
 
-    inline 
-    float cos(float x) {
+    /**
+     * @brief Approximates cosine using Taylor series.
+     * @param x Angle in radians.
+     * @return Cosine of x.
+     */
+    inline
+      float cos(float x) {
       while (x > 3.14159265f) x -= 2.0f * 3.14159265f;
       while (x < -3.14159265f) x += 2.0f * 3.14159265f;
       float x2 = x * x;
       return 1.0f - x2 / 2.0f + (x2 * x2) / 24.0f - (x2 * x2 * x2) / 720.0f;
     }
 
-    inline 
-    float tan(float x) {
+    /**
+     * @brief Computes tangent as sin(x)/cos(x).
+     * @param x Angle in radians.
+     * @return Tangent of x.
+     */
+    inline
+      float tan(float x) {
       float c = cos(x);
       if (c == 0.f) return 0.f;
       return sin(x) / c;
     }
 
-    inline 
-    float asin(float x) {
-      // Taylor series approximation for asin(x), valid for |x| <= 1
+    /**
+     * @brief Approximates arcsine using Taylor series.
+     * @param x Input between -1 and 1.
+     * @return arcsin(x)
+     */
+    inline
+      float asin(float x) {
       float x2 = x * x;
       return x + (x2 * x) / 6.0f + (3 * x2 * x2 * x) / 40.0f;
     }
 
-    inline 
-    float acos(float x) {
-      return 1.5707963f - asin(x); // pi/2 - asin(x)
+    /**
+     * @brief Returns arccosine using identity acos(x) = π/2 - asin(x).
+     * @param x Input between -1 and 1.
+     * @return arccos(x)
+     */
+    inline
+      float acos(float x) {
+      return 1.5707963f - asin(x); // π/2 - asin(x)
     }
 
-    inline 
-    float atan(float x) {
-      // Simplified series approximation
+    /**
+     * @brief Approximates arctangent using simplified series.
+     * @param x Input value.
+     * @return arctan(x)
+     */
+    inline
+      float atan(float x) {
       return x - (x * x * x) / 3.0f + (x * x * x * x * x) / 5.0f;
     }
 
-    inline 
-    float sinh(float x) {
+    /**
+     * @brief Returns hyperbolic sine.
+     * @param x Input value.
+     * @return sinh(x)
+     */
+    inline
+      float sinh(float x) {
       return (exp(x) - exp(-x)) / 2.0f;
     }
 
-    inline 
-    float cosh(float x) {
+    /**
+     * @brief Returns hyperbolic cosine.
+     * @param x Input value.
+     * @return cosh(x)
+     */
+    inline
+      float cosh(float x) {
       return (exp(x) + exp(-x)) / 2.0f;
     }
 
-    inline 
-    float tanh(float x) {
+    /**
+     * @brief Returns hyperbolic tangent.
+     * @param x Input value.
+     * @return tanh(x)
+     */
+    inline
+      float tanh(float x) {
       return sinh(x) / cosh(x);
     }
 
-    //Conversión Angular 
-
+    // Angle Conversion
+    
     /**
-     * @brief Convierte grados a radianes.
+     * @brief Converts degrees to radians.
+     * @param degrees Angle in degrees.
+     * @return Angle in radians.
      */
-    inline 
-    float radians(float degrees) {
+    inline
+      float radians(float degrees) {
       return degrees * 3.14159265f / 180.0f;
     }
 
     /**
-     * @brief Convierte radianes a grados.
+     * @brief Converts radians to degrees.
+     * @param radians Angle in radians.
+     * @return Angle in degrees.
      */
-    inline 
-    float degrees(float radians) {
+    inline
+      float degrees(float radians) {
       return radians * 180.0f / 3.14159265f;
     }
 
   } // namespace Math
-} // namespace EngineUtilities
+} // namespace EU

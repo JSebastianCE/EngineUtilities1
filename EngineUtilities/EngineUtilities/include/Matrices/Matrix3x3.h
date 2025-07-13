@@ -17,7 +17,7 @@ namespace EU {
    * @brief Provides a 3x3 matrix structure and common operations for graphics and physics.
    */
   class
-    Matrix3x3 {
+  Matrix3x3 {
   public:
 
     float m00, m01, m02;
@@ -42,7 +42,7 @@ namespace EU {
      * @param m22 Bottom-right element.
      */
     Matrix3x3(
-      float m00, float m01, float m02,
+    float m00, float m01, float m02,
       float m10, float m11, float m12,
       float m20, float m21, float m22);
 
@@ -52,7 +52,7 @@ namespace EU {
      * @return Resulting matrix.
      */
     Matrix3x3
-      operator+(const Matrix3x3& other) const;
+    operator+(const Matrix3x3& other) const;
 
     /**
      * @brief Subtracts two matrices.
@@ -60,7 +60,7 @@ namespace EU {
      * @return Resulting matrix.
      */
     Matrix3x3
-      operator-(const Matrix3x3& other) const;
+    operator-(const Matrix3x3& other) const;
 
     /**
      * @brief Multiplies the matrix by a scalar.
@@ -68,7 +68,7 @@ namespace EU {
      * @return Scaled matrix.
      */
     Matrix3x3
-      operator*(float scalar) const;
+    operator*(float scalar) const;
 
     /**
      * @brief Multiplies two matrices.
@@ -76,7 +76,7 @@ namespace EU {
      * @return Product matrix.
      */
     Matrix3x3
-      operator*(const Matrix3x3& other) const;
+    operator*(const Matrix3x3& other) const;
 
     /**
      * @brief Multiplies the matrix by a 2D vector (homogeneous).
@@ -84,7 +84,7 @@ namespace EU {
      * @return Transformed 2D vector.
      */
     CVector2
-      operator*(const CVector2& vec) const;
+    operator*(const CVector2& vec) const;
 
     /**
      * @brief Multiplies the matrix by a 3D vector.
@@ -92,7 +92,7 @@ namespace EU {
      * @return Transformed 3D vector.
      */
     CVector3
-      operator*(const CVector3& vec) const;
+    operator*(const CVector3& vec) const;
 
     /**
      * @brief Adds another matrix to this matrix.
@@ -100,7 +100,7 @@ namespace EU {
      * @return Reference to this matrix.
      */
     Matrix3x3&
-      operator+=(const Matrix3x3& other);
+    operator+=(const Matrix3x3& other);
 
     /**
      * @brief Subtracts another matrix from this matrix.
@@ -108,7 +108,7 @@ namespace EU {
      * @return Reference to this matrix.
      */
     Matrix3x3&
-      operator-=(const Matrix3x3& other);
+    operator-=(const Matrix3x3& other);
 
     /**
      * @brief Multiplies this matrix by a scalar.
@@ -116,7 +116,7 @@ namespace EU {
      * @return Reference to this matrix.
      */
     Matrix3x3&
-      operator*=(float scalar);
+    operator*=(float scalar);
 
     /**
      * @brief Accesses a matrix element.
@@ -125,7 +125,7 @@ namespace EU {
      * @return Reference to the element.
      */
     float&
-      operator()(int row, int col);
+    operator()(int row, int col);
 
     /**
      * @brief Accesses a matrix element (const version).
@@ -134,34 +134,34 @@ namespace EU {
      * @return Const reference to the element.
      */
     const
-      float& operator()(int row, int col) const;
+    float& operator()(int row, int col) const;
 
     /**
      * @brief Calculates the determinant of the matrix.
      * @return Determinant value.
      */
     float
-      determinant() const;
+    determinant() const;
 
     /**
      * @brief Returns the transpose of the matrix.
      * @return Transposed matrix.
      */
     Matrix3x3
-      transpose() const;
+    transpose() const;
 
     /**
      * @brief Returns the inverse of the matrix.
      * @return Inverted matrix. Returns identity if determinant is 0.
      */
     Matrix3x3
-      inverse() const;
+    inverse() const;
 
     /**
      * @brief Sets this matrix as the identity matrix.
      */
     void
-      setIdentity();
+    setIdentity();
 
     /**
      * @brief Sets this matrix as a 2D scale matrix.
@@ -169,7 +169,7 @@ namespace EU {
      * @param scaleY Scale along Y.
      */
     void
-      setScale(float scaleX, float scaleY);
+    setScale(float scaleX, float scaleY);
 
     /**
      * @brief Sets this matrix as a 2D translation matrix.
@@ -177,28 +177,28 @@ namespace EU {
      * @param ty Translation along Y.
      */
     void
-      setTranslation(float tx, float ty);
+    setTranslation(float tx, float ty);
 
     /**
      * @brief Sets this matrix as a 2D rotation matrix.
      * @param radians Rotation angle in radians.
      */
     void
-      setRotation(float radians);
+    setRotation(float radians);
 
     /**
      * @brief Returns a matrix filled with zeros.
      * @return Zero matrix.
      */
     static
-      Matrix3x3 zero();
+    Matrix3x3 zero();
 
     /**
      * @brief Returns an identity matrix.
      * @return Identity matrix.
      */
     static
-      Matrix3x3 identity();
+    Matrix3x3 identity();
   };
 
 } // namespace EU
