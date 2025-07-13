@@ -4,7 +4,7 @@
 #include <Vectors/Vector3.h>
 #include <Math/EngineMath.h>
 
-namespace EngineUtilities {
+namespace EU {
 
   /**
    * @file Quaternion.h
@@ -163,4 +163,4 @@ namespace EngineUtilities {
 
   };
 
-} // namespace EngineUtilities
+} // namespace EU

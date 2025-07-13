@@ -1,13 +1,13 @@
 ﻿#pragma once
 
-#include "../Prerequisites.h" 
+//#include "../Prerequisites.h" añadirlo a Prerequisites
 
 /**
  * @file EngineMath.h
  * @brief Provides general mathematical utility functions used across the engine.
  */
 
-namespace EngineUtilities { //Acronimos como EU
+namespace EU { //Acronimos como EU
   namespace Math {
 
     //Funciones Básicas

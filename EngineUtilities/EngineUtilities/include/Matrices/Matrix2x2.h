@@ -8,9 +8,10 @@
  * @file Matrix2x2.h
  * @brief Representa una matriz 2x2 con operaciones algebraicas comunes para transformaciones 2D.
  */
-namespace EngineUtilities {
+namespace EU {
 
-  class Matrix2x2 {
+  class 
+  Matrix2x2 {
   public:
     float m00, m01;
     float m10, m11;
@@ -38,7 +39,8 @@ namespace EngineUtilities {
     // Operadores aritméticos
 
     // Suma
-    Matrix2x2 operator+(const Matrix2x2& other) const {
+    Matrix2x2 
+    operator+(const Matrix2x2& other) const {
     return Matrix2x2(
         m00 + other.m00, m01 + other.m01,
         m10 + other.m10, m11 + other.m11
@@ -46,7 +48,8 @@ namespace EngineUtilities {
     }
 
     // Resta
-    Matrix2x2 operator-(const Matrix2x2& other) const {
+    Matrix2x2 
+    operator-(const Matrix2x2& other) const {
     return Matrix2x2(
         m00 - other.m00, m01 - other.m01,
         m10 - other.m10, m11 - other.m11
@@ -62,7 +65,8 @@ namespace EngineUtilities {
     }
 
     // Mult matrices
-    Matrix2x2 operator*(const Matrix2x2& other) const {
+    Matrix2x2 
+    operator*(const Matrix2x2& other) const {
     return Matrix2x2(
         m00 * other.m00 + m01 * other.m10, // Fila 0 * Col 0
         m00 * other.m01 + m01 * other.m11, // Fila 0 * Col 1
@@ -76,7 +80,8 @@ namespace EngineUtilities {
      * @param vec El vector a transformar.
      * @return Vector transformado.
      */
-    CVector2 operator*(const CVector2& vec) const {
+    CVector2 
+    operator*(const CVector2& vec) const {
     return CVector2(
         m00 * vec.x + m01 * vec.y,
         m10 * vec.x + m11 * vec.y
@@ -85,19 +90,22 @@ namespace EngineUtilities {
 
     // Operadores de asignación compuesta
     // Modificación matriz actual en lugar de crear una nueva
-    Matrix2x2& operator+=(const Matrix2x2& other) {
+    Matrix2x2& 
+    operator+=(const Matrix2x2& other) {
       m00 += other.m00; m01 += other.m01;
       m10 += other.m10; m11 += other.m11;
       return *this;
     }
 
-    Matrix2x2& operator-=(const Matrix2x2& other) {
+    Matrix2x2& 
+    operator-=(const Matrix2x2& other) {
       m00 -= other.m00; m01 -= other.m01;
       m10 -= other.m10; m11 -= other.m11;
       return *this;
     }
 
-    Matrix2x2& operator*=(float scalar) {
+    Matrix2x2& 
+    operator*=(float scalar) {
       m00 *= scalar; m01 *= scalar;
       m10 *= scalar; m11 *= scalar;
       return *this;
@@ -111,7 +119,8 @@ namespace EngineUtilities {
      * @param col Columna (0 o 1).
      * @return Referencia al valor.
      */
-    float& operator()(int row, int col) {
+    float& 
+    operator()(int row, int col) {
      return *((&m00) + row * 2 + col);
     }
 
@@ -135,7 +144,8 @@ namespace EngineUtilities {
      * @brief Retorna la matriz transpuesta.
      * @return Matriz transpuesta.
      */
-    Matrix2x2 transpose() const {
+    Matrix2x2 
+    transpose() const {
       return Matrix2x2(
         m00, m10, //Inercambia filas por columnas
         m01, m11
@@ -146,7 +156,8 @@ namespace EngineUtilities {
      * @brief Retorna la inversa de esta matriz.
      * @return Matriz invertida o identidad si no es invertible.
      */
-    Matrix2x2 inverse() const {
+    Matrix2x2 
+    inverse() const {
       float det = determinant();
       if (det == 0.f) return Matrix2x2(); // No invertible → matriz identidad
       float invDet = 1.f / det;
@@ -182,8 +193,8 @@ namespace EngineUtilities {
      */
     void 
     setRotation(float radians) {
-      float c = EngineUtilities::Math::cos(radians);
-      float s = EngineUtilities::Math::sin(radians);
+      float c = EU::Math::cos(radians);
+      float s = EU::Math::sin(radians);
       m00 = c;  m01 = -s;
       m10 = s;  m11 = c;
     }
@@ -191,14 +202,16 @@ namespace EngineUtilities {
     /**
      * @brief Retorna una matriz llena de ceros.
      */
-    static Matrix2x2 zero() {
+    static 
+    Matrix2x2 zero() {
       return Matrix2x2(0.f, 0.f, 0.f, 0.f);
     }
 
     /**
      * @brief Retorna una matriz identidad.
      */
-    static Matrix2x2 identity() {
+    static 
+    Matrix2x2 identity() {
       return Matrix2x2();
     }
   };

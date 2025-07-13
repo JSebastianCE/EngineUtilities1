@@ -28,49 +28,49 @@ public:
 
   // Arithmetic operators 
   CVector2
-    operator+(const CVector2& other) const {
+  operator+(const CVector2& other) const {
     return CVector2(x + other.x, y + other.y);
   }
 
   CVector2
-    operator-(const CVector2& other) const {
+  operator-(const CVector2& other) const {
     return CVector2(x - other.x, y - other.y);
   }
 
   CVector2
-    operator*(float scalar) const {
+  operator*(float scalar) const {
     return CVector2(x * scalar, y * scalar);
   }
 
   CVector2
-    operator/(float divisor) const {
+  operator/(float divisor) const {
     return CVector2(x / divisor, y / divisor);
   }
 
   // Compound assignment operators 
   CVector2&
-    operator+=(const CVector2& other) {
+  operator+=(const CVector2& other) {
     x += other.x;
     y += other.y;
     return *this;
   }
 
   CVector2&
-    operator-=(const CVector2& other) {
+  operator-=(const CVector2& other) {
     x -= other.x;
     y -= other.y;
     return *this;
   }
 
   CVector2&
-    operator*=(float scalar) {
+  operator*=(float scalar) {
     x *= scalar;
     y *= scalar;
     return *this;
   }
 
   CVector2&
-    operator/=(float scalar) {
+  operator/=(float scalar) {
     x /= scalar;
     y /= scalar;
     return *this;
@@ -78,12 +78,12 @@ public:
 
   // Comparison operators 
   bool
-    operator==(const CVector2& other) const {
+  operator==(const CVector2& other) const {
     return x == other.x && y == other.y;
   }
 
   bool
-    operator!=(const CVector2& other) const {
+  operator!=(const CVector2& other) const {
     return !(*this == other);
   }
 
@@ -95,7 +95,7 @@ public:
    * @return Reference to the component.
    */
   float&
-    operator[](int index) {
+  operator[](int index) {
     return index == 0 ? x : y;
   }
 
@@ -111,7 +111,7 @@ public:
    * @return The Euclidean length.
    */
   float
-    length() const {
+  length() const {
     return sqrt(x * x + y * y);
   }
 
@@ -120,7 +120,7 @@ public:
    * @return The squared length.
    */
   float
-    lengthSquared() const {
+  lengthSquared() const {
     return x * x + y * y;
   }
 
@@ -130,7 +130,7 @@ public:
    * @return The dot product.
    */
   float
-    dot(const CVector2& other) const {
+  dot(const CVector2& other) const {
     return x * other.x + y * other.y;
   }
 
@@ -140,7 +140,7 @@ public:
    * @return The scalar cross product.
    */
   float
-    cross(const CVector2& other) const {
+  cross(const CVector2& other) const {
     return x * other.y - y * other.x;
   }
 
@@ -149,7 +149,7 @@ public:
    * @return A unit vector, or (0,0) if length is zero.
    */
   CVector2
-    normalized() const {
+  normalized() const {
     float len = length();
     if (len == 0.f) return CVector2(0.f, 0.f);
     return CVector2(x / len, y / len);
@@ -159,7 +159,7 @@ public:
    * @brief Normalizes this vector in-place.
    */
   void
-    normalize() {
+  normalize() {
     float len = length();
     if (len != 0.f) {
       x /= len;
@@ -176,7 +176,7 @@ public:
    * @return Distance.
    */
   static float
-    distance(const CVector2& a, const CVector2& b) {
+  distance(const CVector2& a, const CVector2& b) {
     return (a - b).length();
   }
 
@@ -188,7 +188,7 @@ public:
    * @return Interpolated vector.
    */
   static
-    CVector2 lerp(const CVector2& a, const CVector2& b, float t) {
+  CVector2 lerp(const CVector2& a, const CVector2& b, float t) {
     if (t < 0.f) t = 0.f;
     if (t > 1.f) t = 1.f;
     return a + (b - a) * t;
@@ -198,7 +198,7 @@ public:
    * @brief Returns a zero vector (0,0).
    */
   static
-    CVector2 zero() {
+  CVector2 zero() {
     return CVector2(0.f, 0.f);
   }
 
@@ -206,7 +206,7 @@ public:
    * @brief Returns a vector with all components set to 1.
    */
   static
-    CVector2 one() {
+  CVector2 one() {
     return CVector2(1.f, 1.f);
   }
 
@@ -217,7 +217,7 @@ public:
    * @param position A vector representing absolute position.
    */
   void
-    setPosition(const CVector2& position) {
+  setPosition(const CVector2& position) {
     x = position.x;
     y = position.y;
   }
@@ -227,7 +227,7 @@ public:
    * @param offset A vector representing the amount to move.
    */
   void
-    move(const CVector2& offset) {
+  move(const CVector2& offset) {
     x += offset.x;
     y += offset.y;
   }
@@ -237,7 +237,7 @@ public:
    * @param factors A vector of scale factors.
    */
   void
-    setScale(const CVector2& factors) {
+  setScale(const CVector2& factors) {
     x = factors.x;
     y = factors.y;
   }
@@ -247,7 +247,7 @@ public:
    * @param factors A vector of scale factors.
    */
   void
-    scale(const CVector2& factors) {
+  scale(const CVector2& factors) {
     x *= factors.x;
     y *= factors.y;
   }
@@ -257,7 +257,7 @@ public:
    * @param origin A vector representing origin.
    */
   void
-    setOrigin(const CVector2& origin) {
+  setOrigin(const CVector2& origin) {
     x = origin.x;
     y = origin.y;
   }
@@ -271,7 +271,7 @@ private:
    * @brief Returns the square root
    */
   float
-    sqrt(float value) const {
+  sqrt(float value) const {
     if (value <= 0.f) return 0.f;
     float
       guess = value / 2.f;
