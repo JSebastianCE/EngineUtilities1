@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Prerequisites.h"
+//#include "../Prerequisites.h"
 #include <Vectors/Vector2.h>   // Para CVector2
 #include <Vectors/Vector3.h>   // Para CVector3
 #include <Math/EngineMath.h>
@@ -49,6 +49,109 @@ namespace EU {
       m[0][0] = m00; m[0][1] = m01; m[0][2] = m02;
       m[1][0] = m10; m[1][1] = m11; m[1][2] = m12;
       m[2][0] = m20; m[2][1] = m21; m[2][2] = m22;
+    }
+
+    /**
+     * @brief Matrix addition.
+     * @param o Matrix to add.
+     * @return Sum of matrices.
+     */
+    Matrix3x3
+    operator+(const Matrix3x3& o) const {
+      Matrix3x3 r;
+      for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+          r.m[i][j] = m[i][j] + o.m[i][j];
+      return r;
+    }
+
+    /**
+     * @brief Matrix subtraction.
+     * @param o Matrix to subtract.
+     * @return Difference of matrices.
+     */
+    Matrix3x3
+    operator-(const Matrix3x3& o) const {
+      Matrix3x3 r;
+      for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+          r.m[i][j] = m[i][j] - o.m[i][j];
+      return r;
+    }
+
+    /**
+     * @brief Multiplies matrix by a scalar.
+     * @param scalar Scalar value.
+     * @return Scaled matrix.
+     */
+    Matrix3x3
+    operator*(float scalar) const {
+      Matrix3x3 r;
+      for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+          r.m[i][j] = m[i][j] * scalar;
+      return r;
+    }
+
+    /**
+     * @brief In-place scalar multiplication.
+     * @param scalar Scalar value.
+     * @return Reference to this matrix.
+     */
+    Matrix3x3&
+    operator*=(float scalar) {
+      for (int i = 0; i < 3; ++i)
+        for (int j = 0; j < 3; ++j)
+          m[i][j] *= scalar;
+      return *this;
+    }
+
+    /**
+     * @brief Matrix multiplication.
+     * @param o Right-hand side matrix.
+     * @return Product matrix.
+     */
+    Matrix3x3
+    operator*(const Matrix3x3& o) const {
+      Matrix3x3 r = zero();
+      for (int row = 0; row < 3; ++row)
+        for (int col = 0; col < 3; ++col)
+          for (int k = 0; k < 3; ++k)
+            r.m[row][col] += m[row][k] * o.m[k][col];
+      return r;
+    }
+
+    /**
+     * @brief Multiplies this matrix by a 2D vector in homogeneous coordinates (z=1).
+     * @param vec 2D vector.
+     * @return Transformed 2D vector.
+     */
+    CVector2 
+    operator*(const CVector2& vec) const {
+    float x = m[0][0] * vec.x + m[0][1] * vec.y + m[0][2] * 1.0f;
+      float y = m[1][0] * vec.x + m[1][1] * vec.y + m[1][2] * 1.0f;
+      float w = m[2][0] * vec.x + m[2][1] * vec.y + m[2][2] * 1.0f;
+
+      if (w != 0.0f) {
+        x /= w;
+        y /= w;
+      }
+
+      return CVector2(x, y);
+    }
+
+    /**
+     * @brief Multiplies this matrix by a 3D vector.
+     * @param vec 3D vector.
+     * @return Transformed 3D vector.
+     */
+    CVector3 
+    operator*(const CVector3& vec) const {
+    return CVector3(
+        m[0][0] * vec.x + m[0][1] * vec.y + m[0][2] * vec.z,
+        m[1][0] * vec.x + m[1][1] * vec.y + m[1][2] * vec.z,
+        m[2][0] * vec.x + m[2][1] * vec.y + m[2][2] * vec.z
+      );
     }
 
     /**
@@ -177,106 +280,7 @@ namespace EU {
       );
     }
 
-    /**
-     * @brief Matrix addition.
-     * @param o Matrix to add.
-     * @return Sum of matrices.
-     */
-    Matrix3x3
-    operator+(const Matrix3x3& o) const {
-      Matrix3x3 r;
-      for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-          r.m[i][j] = m[i][j] + o.m[i][j];
-      return r;
-    }
 
-    /**
-     * @brief Matrix subtraction.
-     * @param o Matrix to subtract.
-     * @return Difference of matrices.
-     */
-    Matrix3x3
-    operator-(const Matrix3x3& o) const {
-      Matrix3x3 r;
-      for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-          r.m[i][j] = m[i][j] - o.m[i][j];
-      return r;
-    }
-
-    /**
-     * @brief Multiplies matrix by a scalar.
-     * @param scalar Scalar value.
-     * @return Scaled matrix.
-     */
-    Matrix3x3
-    operator*(float scalar) const {
-      Matrix3x3 r;
-      for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-          r.m[i][j] = m[i][j] * scalar;
-      return r;
-    }
-
-    /**
-     * @brief In-place scalar multiplication.
-     * @param scalar Scalar value.
-     * @return Reference to this matrix.
-     */
-    Matrix3x3&
-    operator*=(float scalar) {
-      for (int i = 0; i < 3; ++i)
-        for (int j = 0; j < 3; ++j)
-          m[i][j] *= scalar;
-      return *this;
-    }
-
-    /**
-     * @brief Matrix multiplication.
-     * @param o Right-hand side matrix.
-     * @return Product matrix.
-     */
-    Matrix3x3
-    operator*(const Matrix3x3& o) const {
-      Matrix3x3 r = zero();
-      for (int row = 0; row < 3; ++row)
-        for (int col = 0; col < 3; ++col)
-          for (int k = 0; k < 3; ++k)
-            r.m[row][col] += m[row][k] * o.m[k][col];
-      return r;
-    }
-
-    /**
-     * @brief Multiplies this matrix by a 2D vector in homogeneous coordinates (z=1).
-     * @param vec 2D vector.
-     * @return Transformed 2D vector.
-     */
-    CVector2 operator*(const CVector2& vec) const {
-    float x = m[0][0] * vec.x + m[0][1] * vec.y + m[0][2] * 1.0f;
-      float y = m[1][0] * vec.x + m[1][1] * vec.y + m[1][2] * 1.0f;
-      float w = m[2][0] * vec.x + m[2][1] * vec.y + m[2][2] * 1.0f;
-
-      if (w != 0.0f) {
-        x /= w;
-        y /= w;
-      }
-
-      return CVector2(x, y);
-    }
-
-    /**
-     * @brief Multiplies this matrix by a 3D vector.
-     * @param vec 3D vector.
-     * @return Transformed 3D vector.
-     */
-    CVector3 operator*(const CVector3& vec) const {
-    return CVector3(
-        m[0][0] * vec.x + m[0][1] * vec.y + m[0][2] * vec.z,
-        m[1][0] * vec.x + m[1][1] * vec.y + m[1][2] * vec.z,
-        m[2][0] * vec.x + m[2][1] * vec.y + m[2][2] * vec.z
-      );
-    }
   };
 
 } // namespace EU

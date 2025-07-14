@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Prerequisites.h"
+//#include "../Prerequisites.h"
 #include <Vectors/Vector3.h>
 #include <Math/EngineMath.h>
 
@@ -53,7 +53,8 @@ namespace EU {
       );
     }
 
-    Quaternion& operator*=(const Quaternion& other) {
+    Quaternion& 
+    operator*=(const Quaternion& other) {
       *this = *this * other;
       return *this;
     }

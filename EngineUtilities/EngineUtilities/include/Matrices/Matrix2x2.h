@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-#include "../Prerequisites.h"
+//#include "../Prerequisites.h"
 #include <Vectors/Vector2.h>
 #include <Math/EngineMath.h>
 
@@ -39,6 +39,8 @@ namespace EU {
       : m00(m00), m01(m01), m10(m10), m11(m11) {
     }
 
+    //Addition and remainder operators
+
     /**
      * @brief Adds two matrices.
      * @param other The other matrix.
@@ -65,6 +67,35 @@ namespace EU {
       );
     }
 
+    
+
+/**
+     * @brief Adds another matrix to this one (in-place).
+     * @param other The other matrix.
+     * @return Reference to this matrix.
+     */
+    Matrix2x2&
+    operator+=(const Matrix2x2& other) {
+      m00 += other.m00; m01 += other.m01;
+      m10 += other.m10; m11 += other.m11;
+      return *this;
+    }
+
+    /**
+     * @brief Subtracts another matrix from this one (in-place).
+     * @param other The other matrix.
+     * @return Reference to this matrix.
+     */
+    Matrix2x2&
+    operator-=(const Matrix2x2& other) {
+      m00 -= other.m00; m01 -= other.m01;
+      m10 -= other.m10; m11 -= other.m11;
+      return *this;
+    }
+
+    //Multiplication operators
+
+
     /**
      * @brief Multiplies the matrix by a scalar.
      * @param scalar The scalar value.
@@ -77,6 +108,7 @@ namespace EU {
         m10 * scalar, m11 * scalar
       );
     }
+
 
     /**
      * @brief Multiplies this matrix with another 2x2 matrix.
@@ -107,30 +139,6 @@ namespace EU {
     }
 
     /**
-     * @brief Adds another matrix to this one (in-place).
-     * @param other The other matrix.
-     * @return Reference to this matrix.
-     */
-    Matrix2x2&
-    operator+=(const Matrix2x2& other) {
-      m00 += other.m00; m01 += other.m01;
-      m10 += other.m10; m11 += other.m11;
-      return *this;
-    }
-
-    /**
-     * @brief Subtracts another matrix from this one (in-place).
-     * @param other The other matrix.
-     * @return Reference to this matrix.
-     */
-    Matrix2x2&
-    operator-=(const Matrix2x2& other) {
-      m00 -= other.m00; m01 -= other.m01;
-      m10 -= other.m10; m11 -= other.m11;
-      return *this;
-    }
-
-    /**
      * @brief Multiplies this matrix by a scalar (in-place).
      * @param scalar The scalar value.
      * @return Reference to this matrix.
@@ -141,6 +149,8 @@ namespace EU {
       m10 *= scalar; m11 *= scalar;
       return *this;
     }
+
+    //Elements acces
 
     /**
      * @brief Accesses an element of the matrix.
@@ -164,6 +174,8 @@ namespace EU {
       return *((&m00) + row * 2 + col);
     }
 
+    //Determinant
+
     /**
      * @brief Calculates the determinant of the matrix.
      * @return Scalar determinant.
@@ -172,6 +184,8 @@ namespace EU {
     determinant() const {
       return m00 * m11 - m01 * m10;
     }
+
+    //Transpose
 
     /**
      * @brief Returns the transposed version of this matrix.
