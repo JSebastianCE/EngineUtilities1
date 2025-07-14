@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Prerequisites.h"
+//#include "../Prerequisites.h"
 #include <Vectors/Vector3.h>
 #include <Vectors/Vector4.h>
 #include <Math/EngineMath.h>

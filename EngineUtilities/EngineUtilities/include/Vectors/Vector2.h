@@ -2,6 +2,7 @@
 
 //#include "../Prerequisites.h"
 #include <Math/EngineMath.h>
+#include <Vectors/Vector2.h>
 
 /**
  * @file CVector2.h
@@ -261,15 +262,6 @@ public:
   setOrigin(const CVector2& origin) {
     x = origin.x;
     y = origin.y;
-  }
-
-
-  //se va para utilidades
-
-
-  float 
-  length() const {
-    return EU::Math::sqrt(x * x + y * y);
   }
 
 };

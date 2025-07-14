@@ -286,9 +286,4 @@ public:
     w = origin.w;
   }
 
-  float
-  length() const {
-    return EU::Math::sqrt(x * x + y * y + z * z + w * w);
-  }
-
 };
